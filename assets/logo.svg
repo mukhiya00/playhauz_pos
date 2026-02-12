@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="120" viewBox="0 0 520 120">
+  <defs>
+    <filter id="g" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="520" height="120" rx="18" fill="#0b0b12" stroke="rgba(255,255,255,0.12)"/>
+  <text x="50%" y="62%" text-anchor="middle" font-family="Arial Black, Arial" font-size="64" fill="#ffffff" filter="url(#g)">PLAYHAUZ</text>
+  <text x="50%" y="88%" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">POS UI • Replace this logo in assets/</text>
+  <path d="M40 32 L70 22 L70 52 Z" fill="rgba(0,220,255,0.85)"/>
+  <path d="M450 78 L480 68 L480 98 Z" fill="rgba(255,0,140,0.85)"/>
+</svg>

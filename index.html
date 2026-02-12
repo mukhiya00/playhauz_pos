@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PLAYHAUZ POS</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#07070b"/>
+</head>
+<body>
+  <!-- Glitch background -->
+  <div class="bg-glitch" aria-hidden="true">
+    <div class="scanlines"></div>
+    <div class="sparks" id="sparks"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand__logo" src="assets/logo.svg" alt="PLAYHAUZ" onerror="this.style.display='none';document.querySelector('.brand__text').style.display='block';"/>
+      <div class="brand__text" style="display:none">
+        <div class="brand__name">PLAYHAUZ</div>
+        <div class="brand__tag">POS • Celebrate • Play • Experience</div>
+      </div>
+    </div>
+
+    <div class="topbar__right">
+      <div class="pill" id="storePill">Counter 1</div>
+      <div class="pill" id="clockPill">--:--</div>
+      <button class="btn btn--ghost" id="btnSettings" title="Settings">
+        <span class="ico">⚙️</span><span class="hide-sm">Settings</span>
+      </button>
+      <button class="btn btn--primary" id="btnNewBill">
+        <span class="ico">🧾</span><span>New Bill</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="app">
+    <!-- Left: categories -->
+    <section class="panel panel--left">
+      <div class="panel__header">
+        <div class="panel__title">Categories</div>
+      </div>
+      <div class="cats" id="cats"></div>
+
+      <div class="panel__footer">
+        <button class="btn btn--ghost w-100" id="btnManageItems">➕ Manage Items</button>
+      </div>
+    </section>
+
+    <!-- Center: items -->
+    <section class="panel panel--center">
+      <div class="panel__header">
+        <div class="search">
+          <input id="search" type="search" placeholder="Search packages, VR, racing, birthday..." autocomplete="off" />
+          <button class="btn btn--ghost" id="btnClearSearch" title="Clear">✖</button>
+        </div>
+        <div class="seg" id="viewSeg">
+          <button class="seg__btn seg__btn--on" data-view="grid">Grid</button>
+          <button class="seg__btn" data-view="list">List</button>
+        </div>
+      </div>
+
+      <div class="items" id="items"></div>
+
+      <div class="panel__footer">
+        <div class="hint">
+          Tip: Click item to add • Shift+Click adds 5 • Double-click to quick add
+        </div>
+      </div>
+    </section>
+
+    <!-- Right: cart -->
+    <section class="panel panel--right">
+      <div class="panel__header">
+        <div class="panel__title">Bill</div>
+        <div class="panel__sub" id="billMeta">Walk-in • #0001</div>
+      </div>
+
+      <div class="cart" id="cart"></div>
+
+      <div class="summary">
+        <div class="row">
+          <span>Subtotal</span><span id="subTotal">₹0</span>
+        </div>
+        <div class="row">
+          <span class="muted">Discount</span>
+          <span class="inline">
+            <input class="mini" id="discount" type="number" value="0" min="0" step="1" />%
+          </span>
+        </div>
+        <div class="row">
+          <span class="muted">GST</span>
+          <span class="inline">
+            <input class="mini" id="gst" type="number" value="18" min="0" step="1" />%
+          </span>
+        </div>
+        <div class="row row--big">
+          <span>Total</span><span id="grandTotal">₹0</span>
+        </div>
+      </div>
+
+      <div class="pay">
+        <div class="pay__row">
+          <button class="btn btn--ghost w-100" id="btnHold">⏸ Hold</button>
+          <button class="btn btn--ghost w-100" id="btnPrint">🖨 Print</button>
+        </div>
+        <div class="pay__row">
+          <button class="btn btn--danger w-100" id="btnClear">🗑 Clear</button>
+          <button class="btn btn--primary w-100" id="btnPay">✅ Pay</button>
+        </div>
+
+        <div class="pay__chips">
+          <button class="chip" data-pay="UPI">UPI</button>
+          <button class="chip" data-pay="Card">Card</button>
+          <button class="chip" data-pay="Cash">Cash</button>
+          <button class="chip" data-pay="Wallet">Wallet</button>
+        </div>
+      </div>
+
+      <div class="panel__footer tiny muted">
+        * Items & prices editable in “Manage Items”
+      </div>
+    </section>
+  </main>
+
+  <!-- MODALS -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="1"></div>
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__head">
+        <div class="modal__title" id="modalTitle">Modal</div>
+        <button class="btn btn--ghost" id="modalClose" title="Close">✖</button>
+      </div>
+      <div class="modal__body" id="modalBody"></div>
+      <div class="modal__foot" id="modalFoot"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
